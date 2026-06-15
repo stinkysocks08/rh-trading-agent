@@ -1,0 +1,24 @@
+# Claude Code local/personal overrides (where "allow always" writes rules)
+.claude/settings.local.json
+
+# OAuth tokens and credentials — must never be committed
+.claude.json
+*.token
+*.key
+*.pem
+.env
+.env.*
+
+# Secrets
+secrets/
+credentials/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

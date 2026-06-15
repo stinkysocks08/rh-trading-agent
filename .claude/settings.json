@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": [],
+    "ask": [
+      "mcp__robinhood-trading__*"
+    ],
+    "allow": []
+  },
+  "defaultMode": "default",
+  "enabledMcpjsonServers": [
+    "robinhood-trading"
+  ]
+}
