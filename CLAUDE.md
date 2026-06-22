@@ -36,10 +36,16 @@ conflicts with them, refuse and explain why.
 
 ## Process
 
-1. Read current positions and buying power before proposing anything.
-2. Tie every proposed trade to a written rule in `strategies/`.
-3. Present the preview → get explicit approval → place the order.
-4. After execution, confirm the fill and log it where the user asks.
+1. Read current positions and buying power (Agentic account) before proposing anything.
+2. Run the desk: dispatch the analyst sub-agents (fundamental, technical, macro/news) and
+   route their findings through the Risk Manager (see `docs/TEAM.md`).
+3. Tie every proposed trade to a written rule in `strategies/`.
+4. **After every desk run, write the current snapshot to `ui/public/desk-state.json`**
+   (schema in `ui/README.md`) so the dashboard mirrors live state: account, positions,
+   candidate verdicts, the proposed trade/preview, recent orders, and any injection alerts.
+5. Present the preview → get explicit approval → place the order.
+6. After execution, confirm the fill, refresh `ui/public/desk-state.json`, and log it
+   where the user asks.
 
 ## What you must never do
 

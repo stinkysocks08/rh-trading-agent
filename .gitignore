@@ -13,6 +13,10 @@
 secrets/
 credentials/
 
+# Live desk snapshot written by the PM (contains real account state) — the sanitized
+# ui/public/desk-state.example.json is shipped instead.
+ui/public/desk-state.json
+
 # Python
 __pycache__/
 *.pyc
