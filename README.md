@@ -9,7 +9,9 @@ your watchlist, debate each candidate, and hand you a one-click **preview card**
 approve; it places. Everything's wrapped in written guardrails (human-in-the-loop,
 position caps, prompt-injection defense) and mirrored to a Robinhood-style dashboard.
 
-![RH Agentic Desk — 30s demo: Run desk → team analyzes → preview card → you approve](docs/demo.gif)
+![RH Agentic Desk — the dashboard](docs/demo.jpeg)
+
+*▶ [Watch the 30-second demo](docs/demo.gif) — Run desk → team analyzes → preview card → you approve.*
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-da7756)
