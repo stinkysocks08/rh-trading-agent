@@ -29,12 +29,20 @@
       "WebSearch",
       "WebFetch(domain:www.thestreet.com)",
       "WebFetch(domain:www.cnbc.com)",
-      "PowerShell(npm --prefix ui run build 2>&1 | Select-Object -Last 8; Write-Output \"--- validate JSON ---\"; try { Get-Content ui/public/desk-state.json -Raw | ConvertFrom-Json | Out-Null; Write-Output \"desk-state.json: valid JSON\" } catch { Write-Output \"desk-state.json INVALID: $_\" })",
+      "WebFetch(domain:www.investing.com)",
+      "WebFetch(domain:www.fool.com)",
+      "PowerShell(npm --prefix ui run build 2>&1)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(rm -rf rh-trading-agent)",
-      "Bash(ls -d rh-trading-agent)",
-      "PowerShell(npm --prefix ui run build 2>&1)"
+      "Bash(git commit -q -m ' *)",
+      "Bash(git push *)",
+      "Bash(git check-ignore *)",
+      "Skill(loop)",
+      "Skill(loop:*)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)"
     ],
     "deny": [
       "mcp__robinhood-trading__place_option_order",
@@ -59,5 +67,20 @@
   "enabledMcpjsonServers": [
     "robinhood-trading"
   ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/left-side-scan-gate.sh",
+            "timeout": 15,
+            "statusMessage": "Checking daily left-side scan…"
+          }
+        ]
+      }
+    ]
+  },
   "defaultMode": "default"
 }

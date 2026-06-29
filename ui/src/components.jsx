@@ -1,4 +1,49 @@
+import { useState } from 'react'
 import { usd, pct, num, signClass, timeAgo } from './format.js'
+
+/* ---------- run trigger (button → desk-request.json, dev server only) ---------- */
+
+export function RunControls() {
+  const [tickers, setTickers] = useState('')
+  const [copied, setCopied] = useState(false)
+
+  const promptText = () => {
+    const list = tickers.split(',').map((s) => s.trim().toUpperCase()).filter(Boolean)
+    return list.length
+      ? `Run the desk on ${list.join(', ')} — read-only, stop at the preview card.`
+      : 'Run the desk: screen my watchlist for left-side value candidates — read-only, stop at the preview card.'
+  }
+
+  async function copyPrompt() {
+    try {
+      await navigator.clipboard.writeText(promptText())
+      setCopied(true)
+      setTimeout(() => setCopied(false), 4000)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  return (
+    <section className="panel runbar">
+      <div className="runbar-row">
+        <input
+          className="run-input"
+          placeholder="tickers e.g. AAPL, NVDA  (blank = screen the watchlist)"
+          value={tickers}
+          onChange={(e) => setTickers(e.target.value)}
+        />
+        <button className="run-btn" onClick={copyPrompt}>⧉ Copy run prompt</button>
+      </div>
+      <div className="run-status">
+        {copied
+          ? <span className="pos">✓ Copied — paste it into your Claude Code session to run the desk.</span>
+          : <span className="dim">The desk runs inside your Claude Code session (read-only — it stops at the preview card, never places orders). Copy this and paste it there:</span>}
+        <div className="run-prompt-preview">{promptText()}</div>
+      </div>
+    </section>
+  )
+}
 
 /* ---------- shared bits ---------- */
 

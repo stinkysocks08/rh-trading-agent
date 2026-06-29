@@ -17,6 +17,9 @@ credentials/
 # ui/public/desk-state.example.json is shipped instead.
 ui/public/desk-state.json
 
+# Runtime control file: the dashboard "Run desk" button writes it; the PM's /loop reads it.
+desk-request.json
+
 # Python
 __pycache__/
 *.pyc

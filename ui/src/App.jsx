@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import {
   AccountHeader, RiskPanel, Positions, Candidates,
-  ProposedTrade, ActivityLog, InjectionAlerts,
+  ProposedTrade, ActivityLog, InjectionAlerts, RunControls,
 } from './components.jsx'
 
 const POLL_MS = 5000
@@ -60,6 +60,7 @@ export default function App() {
 
       <main className="layout">
         <div className="col-main">
+          <RunControls />
           <ProposedTrade trade={state.proposedTrade} />
           <Candidates candidates={state.candidates} />
           <Positions positions={state.positions} />

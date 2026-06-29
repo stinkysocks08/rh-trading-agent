@@ -152,6 +152,34 @@ small { opacity: 0.65; font-size: 0.85em; }
 .badge.veto { background: var(--neg-bg); color: var(--neg); border-color: rgba(255,80,0,0.35); }
 .badge.pending { background: var(--accent-bg); color: var(--accent); border-color: rgba(0,200,5,0.35); }
 
+/* ---------- run bar ---------- */
+.runbar { padding: 16px 18px; }
+.runbar-row { display: flex; gap: 10px; }
+.run-input {
+  flex: 1; background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 999px; padding: 11px 18px; color: var(--text);
+  font-family: var(--sans); font-size: 13px; outline: none;
+}
+.run-input::placeholder { color: var(--text-faint); }
+.run-input:focus { border-color: var(--border-2); }
+.run-input:disabled { opacity: 0.6; }
+.run-btn {
+  background: var(--pos); color: #000; border: none; border-radius: 999px;
+  padding: 11px 24px; font-family: var(--sans); font-weight: 800; font-size: 13px;
+  cursor: pointer; white-space: nowrap;
+}
+.run-btn:hover:not(:disabled) { filter: brightness(1.08); }
+.run-btn:disabled { opacity: 0.65; cursor: progress; }
+.run-status { margin-top: 11px; font-size: 12px; line-height: 1.5; }
+.run-status .warn-text { color: var(--warn); }
+.run-status code { font-family: var(--mono); background: var(--bg-2); padding: 1px 5px; border-radius: 4px; }
+.run-prompt-preview {
+  margin-top: 9px; padding: 10px 13px; background: var(--bg-2);
+  border: 1px solid var(--border); border-radius: 9px;
+  font-family: var(--mono); font-size: 12px; color: var(--text); line-height: 1.5;
+  user-select: all;
+}
+
 /* ---------- preview ---------- */
 .preview { border-color: rgba(0,200,5,0.25); box-shadow: 0 0 0 1px rgba(0,200,5,0.05); }
 .preview-line { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }

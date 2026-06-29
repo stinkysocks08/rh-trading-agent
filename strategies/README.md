@@ -28,7 +28,11 @@ there is no allowance and the Risk Manager VETOes.
 
 ### No averaging into losers
 Adding to a position that is underwater is **forbidden** unless a specific strategy file
-below explicitly permits it *and* defines the add limits. This mirrors `CLAUDE.md`.
+below explicitly permits it *and* defines the add limits. This mirrors `CLAUDE.md`. The
+**only** strategy that currently carries that exception is
+[`left-side-accumulation.md`](left-side-accumulation.md) — and only under its pre-planned
+ladder, fixed total-risk budget, and whole-position kill-stop. Any add outside those
+written limits is still forbidden.
 
 ### When the Risk Manager must VETO (not just flag)
 - Any cap above would be breached by the proposed order.
@@ -42,6 +46,10 @@ below explicitly permits it *and* defines the add limits. This mirrors `CLAUDE.m
 Each strategy is one file describing entry signals, exit signals, position sizing, and
 stop conditions. The PM must cite the specific strategy a trade comes from.
 
-- [`mean-reversion.md`](mean-reversion.md) — buy oversold pullbacks inside an uptrend.
+- [`mean-reversion.md`](mean-reversion.md) — buy oversold pullbacks inside an uptrend
+  (right-side-lite: requires the trend intact + stabilization).
+- [`left-side-accumulation.md`](left-side-accumulation.md) — contrarian: planned,
+  risk-budgeted scale-in at support in a quality name's fear-driven selloff (the defined
+  exception to "no averaging into losers").
 
 Add momentum/event-driven/etc. as new files; keep each self-contained and testable.
